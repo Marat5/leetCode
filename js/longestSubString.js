@@ -79,6 +79,7 @@ var lengthOfLongestSubstring = function(s) {
 
     while (right < s.length) {
         const rightChar = s[right];
+        // Last right char index in string before the current right
         const index = chars[rightChar];
 
         if (index !== undefined && index >=left && index < right) {

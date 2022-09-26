@@ -23,7 +23,9 @@ class Solution:
 
     #     return None
 
-    # Smart way to traverse through lists several times
+    # Traverse through both lists concatenated as A+B and B+A
+    # So at the end of both results we get the common tail (if they have intersection they will inevitably have common tail)
+    # Otherwise the pointers are both None at the end of traversal
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
         p1 = headA
         p2 = headB

@@ -1,17 +1,19 @@
 class MyCalendarThree:
-
     def __init__(self):
-        self.events = []
+        self.sorted_list_of_starts_and_ends = []
+        self.max_k = 0
 
     def book(self, start: int, end: int) -> int:
-        k = 1
-        for (e_start, e_end, e_k) in self.events:
-            if start >= e_start and start < e_end:
-                k += e_k
-            elif end > e_start and end <= e_end:
-                k += e_k
-        self.events.append((start, end, k))
-        return k
+        self.sorted_list_of_starts_and_ends.append((start, 1))
+        self.sorted_list_of_starts_and_ends.append((end, -1))
+        self.sorted_list_of_starts_and_ends.sort()
+
+        intersections = 0
+        for (_, one_or_minus_one) in self.sorted_list_of_starts_and_ends:
+            intersections += one_or_minus_one
+            self.max_k = max(self.max_k, intersections)
+
+        return self.max_k
 
 
 # Your MyCalendarThree object will be instantiated and called as such:
